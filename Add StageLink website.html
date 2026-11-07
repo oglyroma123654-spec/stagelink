@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StageLink — работа на мероприятиях Алматы</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2d;--panel2:#18233a;--text:#f4f7ff;--muted:#aab6ce;--line:#2a3854;--accent:#9cf06b;--accent2:#c4ff9e;--blue:#6ea8ff;--danger:#ff8c8c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#1b3151 0,transparent 30%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}.wrap{max-width:1120px;margin:auto;padding:0 22px}
+header{border-bottom:1px solid #ffffff14;background:#0b1020dd;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:850;letter-spacing:-.6px}.logo{width:34px;height:34px;border-radius:11px;background:var(--accent);color:#0b1020;display:grid;place-items:center;font-weight:950}.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:var(--text)}
+.btn{border:0;border-radius:12px;padding:12px 17px;background:var(--accent);color:#101827;font-weight:800;cursor:pointer;font-size:14px;transition:.18s}.btn:hover{background:var(--accent2);transform:translateY(-1px)}.btn.secondary{background:#263653;color:var(--text);border:1px solid #3b4b68}.btn.small{padding:9px 12px}
+.hero{padding:65px 0 42px;display:grid;grid-template-columns:1.3fr .7fr;gap:34px;align-items:center}.eyebrow{color:var(--accent);font-size:12px;font-weight:850;letter-spacing:1.5px;text-transform:uppercase}.hero h1{font-size:clamp(38px,6vw,66px);line-height:1.02;letter-spacing:-2.7px;margin:14px 0 18px;max-width:720px}.hero h1 span{color:var(--accent)}.hero p{color:var(--muted);font-size:17px;max-width:590px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.hero-card{background:linear-gradient(145deg,#1a2b46,#111a2d);border:1px solid #354765;border-radius:24px;padding:24px;box-shadow:0 22px 70px #0005}.hero-card .big{font-size:44px;font-weight:900;letter-spacing:-2px}.hero-card .muted{color:var(--muted)}.mini-stat{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:13px 0;color:var(--muted)}.mini-stat strong{color:var(--text)}
+.notice{background:#17253a;border:1px solid #30435e;color:#cbd7eb;border-radius:12px;padding:12px 15px;font-size:13px;margin:4px 0 30px}.notice b{color:var(--accent)}
+section{padding:30px 0 55px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}.section-head h2{font-size:29px;letter-spacing:-.8px;margin:4px 0}.section-head p{color:var(--muted);margin:0}.filters{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 20px}.field,select,textarea{width:100%;background:#0e1728;border:1px solid #34435e;color:var(--text);padding:12px 13px;border-radius:11px;font:inherit;outline:none}.field:focus,select:focus,textarea:focus{border-color:var(--accent)}.filters .field{max-width:310px}.filters select{max-width:230px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:18px;display:flex;flex-direction:column;gap:11px}.card:hover{border-color:#526b91}.tag{display:inline-flex;width:max-content;padding:5px 9px;border-radius:99px;background:#24364e;color:#c9d8ef;font-size:11px;font-weight:750}.tag.green{background:#203d2b;color:var(--accent)}.card h3{margin:0;font-size:18px}.card p{margin:0;color:var(--muted);font-size:13px}.meta{display:flex;flex-wrap:wrap;gap:12px;color:#c1cce0;font-size:12px}.card-bottom{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}.pay{font-size:18px;font-weight:850}.pay small{display:block;font-size:11px;color:var(--muted);font-weight:500}.empty{grid-column:1/-1;border:1px dashed #41516e;border-radius:15px;padding:28px;text-align:center;color:var(--muted)}
+.profile-avatar{width:64px;height:64px;border-radius:16px;object-fit:cover;background:#263653;border:1px solid var(--line)}.directory-tools{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 20px}.directory-tools .field,.directory-tools select{max-width:320px}.specialist-card{min-height:250px}.specialist-top{display:flex;align-items:center;gap:13px}.specialist-info{min-width:0}.specialist-info h3{margin:0 0 4px}.specialist-card .skills{color:#dce7fa;font-size:13px}.specialist-card .experience{white-space:pre-wrap}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{padding:20px;background:#101a2c;border:1px solid var(--line);border-radius:16px}.step .num{color:var(--accent);font-weight:900;font-size:13px}.step h3{margin:8px 0}.step p{color:var(--muted);font-size:13px;margin:0}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:13px}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.modal-backdrop{display:none;position:fixed;inset:0;background:#050914c9;z-index:10;align-items:center;justify-content:center;padding:18px}.modal-backdrop.open{display:flex}.modal{width:min(560px,100%);max-height:90vh;overflow:auto;background:#121c30;border:1px solid #40516e;border-radius:20px;padding:22px;box-shadow:0 30px 90px #0009}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.modal-head h2{margin:0}.close{border:0;background:#263653;color:white;border-radius:9px;padding:7px 11px;cursor:pointer}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.form-group label{font-size:12px;color:#bdc9dc;font-weight:700}.full{grid-column:1/-1}.success{display:none;background:#203d2b;border:1px solid #42784c;color:#d8ffd0;padding:12px;border-radius:10px;margin-bottom:12px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:44px}.hero-card{max-width:480px}.cards{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+@media(max-width:560px){.wrap{padding:0 16px}.cards,.steps{grid-template-columns:1fr}.hero h1{letter-spacing:-1.8px}.section-head{align-items:start;flex-direction:column}.filters .field,.filters select{max-width:none;width:100%}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.nav{height:64px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="#"><span class="logo">S</span> StageLink</a>
+  <nav class="navlinks"><a href="#orders">Заказы</a><a href="#profile">Моя анкета</a><a href="#specialists">Специалисты</a><a href="#how">Как работает</a><a href="#about">О проекте</a></nav>
+  <button class="btn small" onclick="openModal()">Разместить заказ</button>
+</div></header>
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Алматы · работа на мероприятиях</div>
+      <h1>Твоя команда для <span>больших событий.</span></h1>
+      <p>Находи смены на монтаже сцен, помогай создавать концерты и мероприятия, или быстро собирай техническую команду под свой проект.</p>
+      <div class="hero-actions"><a class="btn" href="#orders">Найти смену</a><button class="btn secondary" onclick="openModal()">Мне нужны специалисты</button></div>
+    </div>
+    <div class="hero-card">
+      <div class="eyebrow">StageLink · Алматы</div>
+      <div class="big">За кулисами<br>начинается шоу.</div>
+      <p class="muted">Первые заявки для монтажников сцен и технических помощников — в одном месте.</p>
+      <div class="mini-stat"><span>Направление</span><strong>Event crew</strong></div>
+      <div class="mini-stat"><span>Формат</span><strong>Проектная работа</strong></div>
+      <div class="mini-stat"><span>Запуск</span><strong>Пилотная версия</strong></div>
+    </div>
+  </div>
+  <div class="notice"><b>Пилот StageLink:</b> демонстрационные заказы показаны для примера. Новые заявки и анкеты сохраняются в общей базе StageLink.</div>
+
+  <section id="orders">
+    <div class="section-head"><div><div class="eyebrow">Возможности</div><h2>Открытые смены</h2><p>Выбери подходящую работу или добавь свою заявку.</p></div><button class="btn" onclick="openModal()">+ Разместить заказ</button></div>
+    <div class="filters">
+      <input id="search" class="field" placeholder="Поиск по названию или месту…" oninput="renderJobs()">
+      <select id="type" onchange="renderJobs()"><option value="">Все направления</option><option>Монтаж сцены</option><option>Технический помощник</option><option>Свет и звук</option><option>Погрузка / разгрузка</option></select>
+      <select id="sort" onchange="renderJobs()"><option value="new">Сначала новые</option><option value="pay">Сначала выше оплата</option></select>
+    </div>
+    <div class="cards" id="jobCards"></div>
+
+<div style="margin-top:30px">
+  <button class="btn" onclick="loadMyApplications()">Мои отклики</button>
+  <div id="myApplications" style="margin-top:20px"></div>
+</div>
+
+</section>
+
+  <section id="profile">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">ТВОЯ АНКЕТА</div>
+      <h2>Профиль специалиста</h2>
+      <p>Расскажи организаторам о себе и своих навыках.</p>
+    </div>
+  </div>
+
+  <form id="profileForm">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Имя и фамилия *</label>
+        <input class="field" name="full_name" required placeholder="Роман Оглы">
+      </div>
+
+      <div class="form-group">
+        <label>Телефон</label>
+        <input class="field" name="phone" placeholder="+7...">
+      </div>
+
+      <div class="form-group">
+        <label>Кем работаешь?</label>
+        <select class="field" name="role">
+          <option value="specialist">Специалист</option>
+          <option value="organizer">Организатор</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Навыки</label>
+        <input class="field" name="skills" placeholder="Монтаж сцены, свет, звук">
+      </div>
+
+      <div class="form-group full">
+        <label>Опыт работы</label>
+        <textarea class="field" name="experience" rows="3" placeholder="Расскажи о своём опыте..."></textarea>
+      </div>
+
+      <div class="form-group full">
+        <label>Ссылка на фотографию (необязательно)</label>
+        <input class="field" name="avatar_url" type="url" placeholder="https://...">
+      </div>
+    </div>
+
+    <button class="btn" type="submit">Сохранить анкету</button>
+  </form>
+</section>
+
+<section id="specialists">
+  <div class="section-head"><div><div class="eyebrow">КОМАНДА STAGELINK</div><h2>Каталог специалистов</h2><p>Находи людей по навыкам и опыту для своих мероприятий.</p></div></div>
+  <div class="directory-tools">
+    <input id="specialistSearch" class="field" placeholder="Поиск по имени, навыкам или опыту…" oninput="renderSpecialists()">
+    <select id="specialistRole" onchange="renderSpecialists()"><option value="">Все специалисты</option><option value="Монтаж сцены">Монтаж сцены</option><option value="Технический помощник">Технический помощник</option><option value="Свет и звук">Свет и звук</option><option value="Погрузка / разгрузка">Погрузка / разгрузка</option></select>
+  </div>
+  <div id="specialistCards" class="cards"><div class="empty">Загружаем каталог специалистов…</div></div>
+</section>
+
+<section id="how">
+  <div class="section-head"><div><div class="eyebrow">Просто и понятно</div><h2>Как это работает</h2><p>На старте соединяем заказчиков и специалистов напрямую.</p></div></div>
+    <div class="steps">
+      <div class="step"><div class="num">01 / СПЕЦИАЛИСТ</div><h3>Найди смену</h3><p>Просмотри условия, дату, место и оплату. Свяжись с автором заказа.</p></div>
+      <div class="step"><div class="num">02 / ОРГАНИЗАТОР</div><h3>Опубликуй заявку</h3><p>Укажи, кто нужен, когда, где и на каких условиях.</p></div>
+      <div class="step"><div class="num">03 / СОТРУДНИЧЕСТВО</div><h3>Договоритесь напрямую</h3><p>Подтвердите обязанности, оплату и безопасность до начала работы.</p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><div><div class="eyebrow">Наша миссия</div><h2>Собрать индустрию в одном месте</h2><p>StageLink начинает с монтажников сцен и технических помощников Алматы. Дальше — звук, свет, сцены и вся event-индустрия.</p></div></div>
+  </section>
+</main>
+<footer><div class="wrap footer-row"><span>© 2026 StageLink · Концепт и пилотная версия</span><span>Алматы, Казахстан · Связь: добавим перед публичным запуском</span></div></footer>
+
+<div class="modal-backdrop" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-head"><h2>Разместить заказ</h2><button class="close" onclick="closeModal()">Закрыть ✕</button></div>
+    <div class="success" id="success">Заявка успешно опубликована!</div>
+    <form id="jobForm">
+      <div class="form-grid">
+        <div class="form-group full"><label>Название заказа *</label><input class="field" name="title" required placeholder="Например, помощник на монтаж сцены"></div>
+        <div class="form-group"><label>Направление *</label><select class="field" name="type" required><option>Монтаж сцены</option><option>Технический помощник</option><option>Свет и звук</option><option>Погрузка / разгрузка</option></select></div>
+        <div class="form-group"><label>Оплата, ₸ *</label><input class="field" name="pay" type="number" min="1" required placeholder="15000"></div>
+        <div class="form-group"><label>Дата и время *</label><input class="field" name="date" type="datetime-local" required></div>
+        <div class="form-group"><label>Количество людей</label><input class="field" name="people" type="number" min="1" value="1"></div>
+        <div class="form-group full"><label>Место в Алматы *</label><input class="field" name="place" required placeholder="Район, площадка или адрес"></div>
+        <div class="form-group full"><label>Описание и требования</label><textarea class="field" name="description" rows="3" placeholder="Обязанности, опыт, длительность смены, питание и условия оплаты…"></textarea></div>
+        <div class="form-group full"><label>Контакт для связи *</label><input class="field" name="contact" required placeholder="@username или номер телефона"></div>
+      </div>
+      <button class="btn" type="submit" style="width:100%">Опубликовать заявку</button>
+    </form>
+  </div>
+</div>
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+const demoJobs=[
+{id:1,title:"Помощник на монтаж сцены",type:"Монтаж сцены",pay:18000,date:"2026-11-14T09:00",people:4,place:"Атакент, Алматы",description:"Помощь монтажной бригаде. Опыт не обязателен, важны пунктуальность и физическая готовность. Инструктаж на месте.",contact:"Демо-заказ · контакт появится после проверки",demo:true},
+{id:2,title:"Технический помощник на мероприятие",type:"Технический помощник",pay:15000,date:"2026-11-16T12:00",people:2,place:"Центр Алматы",description:"Помощь с подготовкой площадки, кабелями и оборудованием под руководством техника.",contact:"Демо-заказ · контакт появится после проверки",demo:true},
+{id:3,title:"Рабочие на погрузку / разгрузку",type:"Погрузка / разгрузка",pay:12000,date:"2026-11-18T08:30",people:3,place:"Алатауский район",description:"Разгрузка кейсов и оборудования. Сменная работа, детали уточняются у организатора.",contact:"Демо-заказ · контакт появится после проверки",demo:true},
+{id:4,title:"Помощник светотехника",type:"Свет и звук",pay:20000,date:"2026-11-20T10:00",people:1,place:"Площадка в Бостандыкском районе",description:"Помощь при установке света и прокладке кабеля. Желательно базовое понимание техники.",contact:"Демо-заказ · контакт появится после проверки",demo:true}
+];
+window.db = window.supabase.createClient(
+  "https://blonvjokkisgkydjmigz.supabase.co",
+  "sb_publishable_cfU_snAVXgqe16Hyr0sAgQ_YfUSdUNY"
+);
+const db = window.db;
+let jobs=JSON.parse(localStorage.getItem("stagelink_jobs")||"null")||demoJobs;
+function save(){localStorage.setItem("stagelink_jobs",JSON.stringify(jobs))}
+function fmtDate(s){const d=new Date(s);return isNaN(d)?s:d.toLocaleString("ru-RU",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}
+let specialists = [];
+
+async function loadSpecialists() {
+  const root = document.getElementById("specialistCards");
+  if (!root) return;
+  const { data: { user }, error: authError } = await window.db.auth.getUser();
+  if (authError || !user) {
+    root.innerHTML = '<div class="empty">Войди в StageLink, чтобы просматривать каталог специалистов.</div>';
+    return;
+  }
+  const { data, error } = await window.db
+    .from("public_profiles")
+    .select("user_id, full_name, role, skills, experience, avatar_url, created_at")
+    .eq("role", "specialist")
+    .order("created_at", { ascending: false });
+  if (error) {
+    console.error("Ошибка загрузки каталога:", error);
+    root.innerHTML = '<div class="empty">Не удалось загрузить каталог: ' + esc(error.message) + '</div>';
+    return;
+  }
+  specialists = data || [];
+  renderSpecialists();
+}
+
+function renderSpecialists() {
+  const root = document.getElementById("specialistCards");
+  if (!root) return;
+  const q = (document.getElementById("specialistSearch")?.value || "").trim().toLowerCase();
+  const role = document.getElementById("specialistRole")?.value || "";
+  const list = specialists.filter(p => {
+    const text = `${p.full_name || ""} ${p.skills || ""} ${p.experience || ""}`.toLowerCase();
+    return (!q || text.includes(q)) && (!role || text.includes(role.toLowerCase()));
+  });
+  if (!list.length) {
+    root.innerHTML = '<div class="empty">Пока нет подходящих анкет. Специалисты появятся здесь после сохранения своих профилей.</div>';
+    return;
+  }
+  root.innerHTML = list.map(p => {
+    const avatar = p.avatar_url && /^https?:\/\//i.test(p.avatar_url)
+      ? `<img class="profile-avatar" src="${esc(p.avatar_url)}" alt="Фото специалиста" loading="lazy">`
+      : '<div class="profile-avatar" style="display:grid;place-items:center;font-size:25px">👤</div>';
+    return `<article class="card specialist-card">
+      <div class="specialist-top">${avatar}<div class="specialist-info"><h3>${esc(p.full_name || "Специалист")}</h3><span class="tag green">Специалист</span></div></div>
+      <div><strong>Навыки</strong><p class="skills">${esc(p.skills || "Не указаны")}</p></div>
+      <div><strong>Опыт</strong><p class="experience">${esc(p.experience || "Пока не указан")}</p></div>
+    </article>`;
+  }).join("");
+}
+
+async function loadProfile() {
+  const form = document.getElementById("profileForm");
+  if (!form) return;
+
+  const { data: { user }, error: authError } = await window.db.auth.getUser();
+
+  if (authError || !user) {
+    form.reset();
+    return;
+  }
+
+  const { data, error } = await window.db
+    .from("profiles")
+    .select("full_name, phone, role, skills, experience, avatar_url")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Ошибка загрузки профиля:", error);
+    return;
+  }
+
+  if (!data) {
+    form.reset();
+    return;
+  }
+
+  form.elements.full_name.value = data.full_name || "";
+  form.elements.phone.value = data.phone || "";
+  form.elements.role.value = data.role || "specialist";
+  form.elements.skills.value = data.skills || "";
+  form.elements.experience.value = data.experience || "";
+  form.elements.avatar_url.value = data.avatar_url || "";
+}
+
+document.getElementById("profileForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const { data: { user }, error: authError } = await window.db.auth.getUser();
+
+  if (authError || !user) {
+    alert("Сначала войди в аккаунт StageLink.");
+    return;
+  }
+
+  const f = new FormData(e.target);
+  const profile = {
+    user_id: user.id,
+    full_name: String(f.get("full_name") || "").trim(),
+    phone: String(f.get("phone") || "").trim(),
+    role: String(f.get("role") || "specialist"),
+    skills: String(f.get("skills") || "").trim(),
+    experience: String(f.get("experience") || "").trim(),
+    avatar_url: String(f.get("avatar_url") || "").trim()
+  };
+
+  const { data: existing, error: findError } = await window.db
+    .from("profiles")
+    .select("id")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (findError) {
+    alert("Не удалось проверить профиль: " + findError.message);
+    return;
+  }
+
+  let result;
+
+  if (existing) {
+    result = await window.db
+      .from("profiles")
+      .update(profile)
+      .eq("id", existing.id);
+  } else {
+    result = await window.db
+      .from("profiles")
+      .insert(profile);
+  }
+
+  if (result.error) {
+    alert("Не удалось сохранить анкету: " + result.error.message);
+    return;
+  }
+
+  // В публичную таблицу отправляются только поля анкеты, без телефона.
+  const publicProfile = {
+    user_id: user.id,
+    full_name: profile.full_name,
+    role: profile.role,
+    skills: profile.skills,
+    experience: profile.experience,
+    avatar_url: profile.avatar_url
+  };
+  const { error: publicError } = await window.db
+    .from("public_profiles")
+    .upsert(publicProfile, { onConflict: "user_id" });
+
+  if (publicError) {
+    alert("Личная анкета сохранена, но каталог не обновлён: " + publicError.message);
+    return;
+  }
+
+  await loadSpecialists();
+  alert("Анкета успешно сохранена и обновлена в каталоге!");
+});
+
+async function loadJobs(){
+  const {data,error}=await db
+    .from("jobs")
+    .select("*")
+    .eq("status","open")
+    .order("created_at",{ascending:false});
+
+  if(error){
+    console.error("Ошибка загрузки:",error);
+    alert("Не удалось загрузить заказы из базы.");
+    return;
+  }
+
+  jobs=data.map(j=>({
+    ...j,
+    pay:j.budget,
+    date:j.event_date,
+    demo:false
+  }));
+
+  renderJobs();
+}
+function renderJobs(){
+ const q=document.getElementById("search").value.toLowerCase(),t=document.getElementById("type").value,sort=document.getElementById("sort").value;
+ let list=jobs.filter(j=>(!t||j.type===t)&&(`${j.title} ${j.place} ${j.description}`.toLowerCase().includes(q)));
+ list.sort((a,b)=>sort==="pay"?b.pay-a.pay:new Date(a.date)-new Date(b.date));
+ const root=document.getElementById("jobCards");
+ if(!list.length){root.innerHTML='<div class="empty">Ничего не найдено. Попробуй изменить фильтр или разместить первую заявку.</div>';return}
+ root.innerHTML=list.map(j=>`<article class="card"><span class="tag ${j.demo?'':'green'}">${j.type}</span><h3>${esc(j.title)}</h3><p>${esc(j.description||"Подробности уточняются у заказчика.")}</p><div class="meta"><span>📍 ${esc(j.place)}</span><span>🗓 ${fmtDate(j.date)}</span><span>👥 ${j.people||1} чел.</span></div><div class="card-bottom"><div class="pay">${Number(j.pay).toLocaleString("ru-RU")} ₸<small>за смену / по договорённости</small></div><button class="btn small secondary" onclick="applyJob(${j.id})">Откликнуться</button></div></article>`).join("");
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function openModal(){document.getElementById("modal").classList.add("open");document.getElementById("success").style.display="none"}
+function closeModal(){document.getElementById("modal").classList.remove("open")}
+async function applyJob(id) {
+  const j = jobs.find(x => x.id === id);
+
+  if (!j || j.demo) {
+    alert("Это демонстрационная заявка.");
+    return;
+  }
+
+  const { data: { user }, error: authError } = await window.db.auth.getUser();
+
+  if (authError || !user) {
+    alert("Сначала войди в аккаунт StageLink.");
+    return;
+  }
+
+  if (j.organizer_id === user.id) {
+    alert("Нельзя откликнуться на собственную заявку.");
+    return;
+  }
+
+  const message = prompt("Напиши коротко, почему ты подходишь для этой работы:");
+
+  if (message === null || !message.trim()) return;
+
+  const { error } = await window.db.from("applications").insert({
+    job_id: j.id,
+    specialist_id: user.id,
+    message: message.trim(),
+    status: "pending"
+  });
+
+  if (error) {
+    alert("Не удалось отправить отклик: " + error.message);
+    return;
+  }
+
+  alert("Твой отклик успешно отправлен!");
+}
+document.getElementById("jobForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const { data: { user } } = await window.db.auth.getUser();
+
+  if (!user) {
+    alert("Сначала войди в аккаунт!");
+    return;
+  }
+
+  const f = new FormData(e.target);
+  const j = Object.fromEntries(f.entries());
+
+  const { error } = await window.db.from("jobs").insert({
+    organizer_id: user.id,
+    title: j.title,
+    type: j.type,
+    budget: Number(j.pay),
+   event_date: j.date ? new Date(j.date).toISOString() : null,
+    people: Number(j.people || 1),
+    place: j.place,
+    description: j.description,
+    contact: j.contact,
+    city: "Алматы",
+    status: "open"
+  });
+
+  if (error) {
+    alert("Ошибка: " + error.message);
+    return;
+  }
+
+  e.target.reset();
+  await loadJobs();
+
+  document.getElementById("success").style.display = "block";
+  document.getElementById("success").scrollIntoView({ block: "nearest" });
+});
+async function loadMyApplications() {
+  const box = document.getElementById("myApplications");
+  box.textContent = "Загружаем отклики...";
+
+  const { data: { user }, error: authError } = await window.db.auth.getUser();
+
+  if (authError || !user) {
+    box.textContent = "Сначала войди в аккаунт StageLink.";
+    return;
+  }
+
+  const { data: myJobs, error: jobsError } = await window.db
+    .from("jobs")
+    .select("id, title")
+    .eq("organizer_id", user.id);
+
+  if (jobsError) {
+    box.textContent = "Ошибка загрузки заявок: " + jobsError.message;
+    return;
+  }
+
+  if (!myJobs || !myJobs.length) {
+    box.textContent = "У тебя пока нет опубликованных заявок.";
+    return;
+  }
+
+  const jobIds = myJobs.map(job => job.id);
+
+  const { data: apps, error } = await window.db
+    .from("applications")
+    .select("*")
+    .in("job_id", jobIds)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    box.textContent = "Ошибка загрузки откликов: " + error.message;
+    return;
+  }
+
+  if (!apps || !apps.length) {
+    box.textContent = "Пока никто не откликнулся.";
+    return;
+  }
+
+  const titles = Object.fromEntries(myJobs.map(job => [job.id, job.title]));
+
+  box.innerHTML = apps.map(a => `
+    <div class="card" style="margin-bottom:12px">
+      <h3>${esc(titles[a.job_id] || "Заявка")}</h3>
+      <p>${esc(a.message || "")}</p>
+      <p>Статус: ${esc(a.status || "pending")}</p>
+      <p>Специалист ID: ${esc(a.specialist_id)}</p>
+      <button class="btn small" onclick="updateApplicationStatus(${a.id}, 'accepted')">Принять</button>
+      <button class="btn small secondary" onclick="updateApplicationStatus(${a.id}, 'rejected')">Отклонить</button>
+    </div>
+  `).join("");
+}
+
+async function updateApplicationStatus(id, status) {
+  const { error } = await window.db
+    .from("applications")
+    .update({ status })
+    .eq("id", id);
+
+  if (error) {
+    alert("Не удалось изменить статус: " + error.message);
+    return;
+  }
+
+  alert(status === "accepted" ? "Специалист принят!" : "Отклик отклонён.");
+  await loadMyApplications();
+}
+
+loadJobs();
+loadSpecialists();
+</script>
+<div id="authBox" style="position:fixed;right:20px;top:20px;z-index:9999;background:#172b25;color:white;padding:20px;border-radius:14px;width:280px;box-shadow:0 5px 25px #0008;font-family:Arial">
+  <h3>StageLink — аккаунт</h3>
+  <input id="authEmail" type="email" placeholder="Электронная почта" style="width:100%;padding:10px;margin:5px 0;box-sizing:border-box">
+  <input id="authPassword" type="password" placeholder="Пароль (от 6 символов)" style="width:100%;padding:10px;margin:5px 0;box-sizing:border-box">
+  <button id="signUpBtn" style="width:100%;padding:10px;margin:5px 0;cursor:pointer">Регистрация</button>
+  <button id="signInBtn" style="width:100%;padding:10px;margin:5px 0;cursor:pointer">Войти</button>
+  <button id="signOutBtn" style="width:100%;padding:10px;margin:5px 0;cursor:pointer;display:none">Выйти</button>
+  <p id="authStatus" style="font-size:13px">Войди или создай аккаунт</p>
+</div>
+
+<script>
+const emailInput = document.getElementById("authEmail");
+const passwordInput = document.getElementById("authPassword");
+const authStatus = document.getElementById("authStatus");
+authStatus.textContent = typeof window.db !== "undefined"
+  ? "Supabase подключён!"
+  : "Ошибка: Supabase не подключён!";
+document.getElementById("signUpBtn").onclick = async () => {
+  const {data,error} = await window.db.auth.signUp({
+    email: emailInput.value.trim(),
+    password: passwordInput.value
+  });
+  authStatus.textContent = error ? error.message :
+    "Регистрация отправлена! Проверь почту для подтверждения.";
+};
+
+document.getElementById("signInBtn").onclick = async () => {
+  const {data,error} = await window.db.auth.signInWithPassword({
+    email: emailInput.value.trim(),
+    password: passwordInput.value
+  });
+  authStatus.textContent = error ? error.message : "Ты вошёл в StageLink!";
+};
+
+document.getElementById("signOutBtn").onclick = async () => {
+  const {error} = await window.db.auth.signOut();
+  authStatus.textContent = error ? error.message : "Ты вышел из аккаунта.";
+};
+
+function setAuthUI(loggedIn) {
+  document.getElementById("signOutBtn").style.display = loggedIn ? "block" : "none";
+  document.getElementById("signInBtn").style.display = loggedIn ? "none" : "block";
+  document.getElementById("signUpBtn").style.display = loggedIn ? "none" : "block";
+  authStatus.textContent = loggedIn
+    ? "Ты вошёл в StageLink!"
+    : "Войди или создай аккаунт";
+}
+
+async function updateAuth() {
+  const {data} = await window.db.auth.getSession();
+  const loggedIn = !!data.session;
+  setAuthUI(loggedIn);
+  if (loggedIn) {
+    await loadProfile();
+    await loadSpecialists();
+  } else {
+    specialists = [];
+    renderSpecialists();
+  }
+}
+
+// Обновляем интерфейс при входе/выходе; загрузку профиля запускаем после callback.
+window.db.auth.onAuthStateChange((_event, session) => {
+  const loggedIn = !!session;
+  setAuthUI(loggedIn);
+  if (loggedIn) Promise.resolve().then(async () => {
+    await loadProfile();
+    await loadSpecialists();
+  });
+  else { specialists = []; renderSpecialists(); }
+});
+updateAuth();
+</script>
+</body>
+</html>
