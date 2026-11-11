@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oglyroma123654-spec.github.io/stagelink/sitemap.xml
