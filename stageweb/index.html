@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="StageWeb — создаём современные сайты для бизнеса. Лендинги, сайты компаний, интернет-магазины и цифровые решения.">
+  <title>StageWeb — сайты, которые работают</title>
+  <style>
+    :root{--bg:#0b0d12;--panel:#121620;--line:rgba(255,255,255,.1);--text:#f5f7fb;--muted:#a3adbd;--accent:#b7f36b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(11,13,18,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:23px;font-weight:850;letter-spacing:-1px}.brand span{color:var(--accent)}
+    .navlinks{display:flex;gap:28px;color:var(--muted);font-size:14px}.navlinks a:hover{color:var(--text)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:12px;background:var(--accent);color:#11160b;font-weight:800;font-size:14px;border:0;cursor:pointer;transition:.2s}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+    .hero{padding:105px 0 88px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:560px;height:560px;right:-180px;top:-180px;background:radial-gradient(circle,rgba(183,243,107,.13),transparent 68%);pointer-events:none}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 14px var(--accent)}
+    h1{font-size:clamp(48px,8vw,88px);line-height:.99;letter-spacing:-.065em;max-width:850px;margin:28px 0 24px}h1 em{font-style:normal;color:var(--accent)}
+    .lead{font-size:18px;color:var(--muted);max-width:610px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+    .hero-note{display:flex;gap:28px;flex-wrap:wrap;margin-top:62px;color:var(--muted);font-size:13px}.hero-note strong{color:var(--text);font-weight:700}
+    section{padding:82px 0}.section-top{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:30px}
+    .kicker{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.15em;font-weight:800}
+    h2{font-size:clamp(32px,5vw,48px);line-height:1.05;letter-spacing:-.045em;margin:10px 0 0}.sub{color:var(--muted);max-width:440px;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.service{padding:26px;background:linear-gradient(145deg,#151a25,#10131b);border:1px solid var(--line);border-radius:18px;min-height:190px;transition:.25s}
+    .service:hover,.work:hover{transform:translateY(-4px);border-color:rgba(183,243,107,.38)}.num{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.1em}.service h3{font-size:22px;margin:25px 0 8px;letter-spacing:-.03em}.service p{color:var(--muted);margin:0;max-width:440px}
+    .work-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.work{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);transition:.25s}
+    .mock{min-height:250px;padding:22px;background:linear-gradient(135deg,#202b35,#121a22);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .mock.alt{background:linear-gradient(135deg,#332b24,#171512)}.browser{width:86%;border-radius:12px;background:#0c1017;border:1px solid rgba(255,255,255,.2);padding:12px;box-shadow:0 20px 55px #0008;transform:rotate(-3deg)}
+    .browser-top{display:flex;gap:5px;margin-bottom:13px}.browser-top i{width:6px;height:6px;border-radius:50%;background:#687384}.browser-bar{height:9px;width:45%;background:#354152;border-radius:10px;margin-bottom:12px}
+    .browser-title{font-size:clamp(19px,3vw,30px);font-weight:850;line-height:1.05;letter-spacing:-1px}.browser-title b{color:var(--accent)}.browser-lines{display:flex;gap:6px;margin-top:15px}.browser-lines span{height:5px;background:#354152;border-radius:9px;width:25%}
+    .work-info{padding:20px 22px}.work-info h3{margin:0 0 5px}.work-info p{margin:0;color:var(--muted);font-size:14px}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{border-top:1px solid var(--line);padding:20px 10px 0 0}.step b{font-size:13px;color:var(--accent)}.step h3{font-size:18px;margin:15px 0 7px}.step p{font-size:14px;color:var(--muted);margin:0}
+    .cta{padding:48px;border:1px solid rgba(183,243,107,.25);border-radius:24px;background:radial-gradient(circle at 90% 10%,rgba(183,243,107,.13),transparent 35%),#121720;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .cta h2{max-width:620px}.cta p{color:var(--muted);margin-bottom:0}
+    footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    @media(max-width:760px){.navlinks{display:none}.hero{padding:76px 0 65px}section{padding:62px 0}.section-top{display:block}.sub{margin-top:14px}.grid,.work-grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.cta{padding:30px;display:block}.cta .btn{margin-top:22px}.hero-note{margin-top:42px;gap:15px}}
+    @media(max-width:420px){.wrap{width:min(100% - 30px,1120px)}.steps{grid-template-columns:1fr}.hero-actions .btn{width:100%}.service{min-height:165px}}
+  </style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="#">Stage<span>Web</span>.</a><nav class="navlinks"><a href="#services">Услуги</a><a href="#work">Работы</a><a href="#process">Процесс</a></nav><a class="btn" href="#contact">Обсудить проект ↗</a></div></header>
+<main>
+<section class="hero"><div class="wrap"><div class="eyebrow"><span class="dot"></span> Веб-студия · Алматы</div><h1>Создаём сайты.<br><em>Запускаем идеи.</em></h1><p class="lead">Современные сайты для бизнеса, который хочет выглядеть уверенно в интернете и превращать посетителей в клиентов.</p><div class="hero-actions"><a class="btn" href="#contact">Есть задача? Поговорим ↗</a><a class="btn ghost" href="#work">Посмотреть подход</a></div><div class="hero-note"><span><strong>01</strong> Дизайн с характером</span><span><strong>02</strong> Удобно на телефоне</span><span><strong>03</strong> От идеи до запуска</span></div></div></section>
+<section id="services"><div class="wrap"><div class="section-top"><div><div class="kicker">Что мы делаем</div><h2>Сайт под вашу задачу</h2></div><p class="sub">Не шаблон ради шаблона. Подбираем структуру и функциональность под ваш бизнес и клиентов.</p></div><div class="grid"><article class="service"><div class="num">01 / ПРЕЗЕНТАЦИЯ</div><h3>Сайты-визитки</h3><p>Расскажем о компании, покажем преимущества и поможем клиенту связаться с вами.</p></article><article class="service"><div class="num">02 / ПРОДАЖИ</div><h3>Лендинги</h3><p>Одна понятная страница, которая ведёт посетителя к заявке или покупке.</p></article><article class="service"><div class="num">03 / КАТАЛОГ</div><h3>Интернет-магазины</h3><p>Каталог товаров, карточки, корзина и удобный путь к оформлению заказа.</p></article><article class="service"><div class="num">04 / РОСТ</div><h3>Корпоративные сайты</h3><p>Многостраничные сайты для компаний, команд и развивающихся проектов.</p></article></div></div></section>
+<section id="work"><div class="wrap"><div class="section-top"><div><div class="kicker">Концепции и проекты</div><h2>От идеи к экрану</h2></div><p class="sub">Показываем направление дизайна. Демонстрационные макеты не являются завершёнными клиентскими работами.</p></div><div class="work-grid"><article class="work"><div class="mock"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="browser-bar"></div><div class="browser-title">Работа на<br><b>мероприятиях.</b></div><div class="browser-lines"><span></span><span></span><span></span></div></div></div><div class="work-info"><h3>StageLink</h3><p>Собственный проект платформы для event-индустрии Алматы.</p></div></article><article class="work"><div class="mock alt"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="browser-bar"></div><div class="browser-title">Ваш бизнес.<br><b>Новый уровень.</b></div><div class="browser-lines"><span></span><span></span><span></span></div></div></div><div class="work-info"><h3>Business Concept</h3><p>Демонстрационная концепция сайта компании.</p></div></article></div></div></section>
+<section id="process"><div class="wrap"><div class="section-top"><div><div class="kicker">Как работаем</div><h2>Просто и прозрачно</h2></div><p class="sub">Вы понимаете, что происходит на каждом этапе — от первого разговора до публикации.</p></div><div class="steps"><div class="step"><b>ШАГ 01</b><h3>Знакомимся</h3><p>Обсуждаем задачу, аудиторию и цели сайта.</p></div><div class="step"><b>ШАГ 02</b><h3>Проектируем</h3><p>Согласуем структуру, стиль и содержание.</p></div><div class="step"><b>ШАГ 03</b><h3>Разрабатываем</h3><p>Собираем сайт и проверяем его на разных экранах.</p></div><div class="step"><b>ШАГ 04</b><h3>Запускаем</h3><p>Публикуем сайт и передаём результат.</p></div></div></div></section>
+<section id="contact"><div class="wrap"><div class="cta"><div><div class="kicker">Есть идея?</div><h2>Давайте создадим что-то сильное.</h2><p>Расскажите, какой сайт нужен вашему бизнесу. Обсудим задачу и предложим следующий шаг.</p></div><a class="btn" href="https://wa.me/?text=Здравствуйте!%20Хочу%20обсудить%20создание%20сайта%20с%20StageWeb.">Написать в WhatsApp ↗</a></div></div></section>
+</main>
+<footer><div class="wrap foot"><a class="brand" href="#">Stage<span>Web</span>.</a><span>© 2026 StageWeb. Создаём цифровые решения.</span><span>Алматы, Казахстан</span></div></footer>
+</body></html>
